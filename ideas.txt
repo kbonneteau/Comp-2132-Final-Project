@@ -18,7 +18,7 @@ math function for adding up calculateRoundScore
 
 if dice1 = 0 OR dice2 = 0
     then Score = 0
-else if dice1 == dice2
+else if dice1 === dice2
     then Score = (dice1.value+dice2.value)*2
 else (
     Score = dice1.value+dice2.value
