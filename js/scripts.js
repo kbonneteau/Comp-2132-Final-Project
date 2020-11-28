@@ -70,11 +70,14 @@ Player.prototype.addDice = function(dice1, dice2){
     this.die.push(dice1);
     this.die.push(dice2);
 }
+// Player.prototype.stateDice = function(){
+//     return this.die;
+// }
 Player.prototype.addToScore = function(score){
     this.score = score;
 }
 Player.prototype.describeSelf = function(){
-    let description = `<p>${this.name}'s current dice roll is ${this.die[0]} and ${this.die[1]}</p>`
+    let description = `<p>${this.name}'s current dice roll is ${this.die[0]} and ${this.die[1]}.<br>Current score: ${this.score}</p>`
     
     return description;
 }
@@ -82,17 +85,27 @@ Player.prototype.describeSelf = function(){
 //     return this.score;
 // }
 
+
+// Instantiate two players. Add dice to their possession.
+
+
 const player1 = new Player("Challenger");
 p1dice1.rollDice();
 p1dice2.rollDice();
 player1.addDice(p1dice1.describeSelf(),p1dice2.describeSelf());
+player1.addToScore(calculateRoundScore(p1dice1.describeSelf(),p1dice2.describeSelf()));
+
+const player2 = new Player("Opponent");
+// p2dice1.rollDice();
+// p2dice2.rollDice();
+player2.addDice(p2dice1.describeSelf(),p2dice2.describeSelf());
 
 
 // player1.addToScore(p1dice1.rollDice());
 
 
 // test
-popOutput.innerHTML = `<p> Test results: ${player1.describeSelf()}</p>`;
+popOutput.innerHTML = `<p> Test results: ${player1.describeSelf()}<br>${player2.describeSelf()}</p>`;
 
 
 
@@ -127,11 +140,20 @@ btnRollDice.addEventListener("click",function(){
 // =======================================================
 
 
-// function calculateRoundScoreP1 (){
+function calculateRoundScore(dice1, dice2){
+    
+    let roundScore;
 
+    if(dice1 == 1 || dice2 == 1){
+        roundScore = 0;
+    }else if(dice1 === dice2){
+        roundScore = ((+dice1 + +dice2)*2);
+    }else{
+        roundScore = (+dice1 + +dice2);
+    };
 
-
-// };
+    return roundScore;
+};
 
 
 
@@ -141,7 +163,7 @@ function
 
 math function for adding up calculateRoundScore 
 
-if dice1 = 0 OR dice2 = 0
+if dice1 = 1 OR dice2 = 1
     then Score = 0
 else if dice1 === dice2
     then Score = (dice1.value+dice2.value)*2
