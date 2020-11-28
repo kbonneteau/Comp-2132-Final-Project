@@ -1,5 +1,5 @@
 // =======================================================
-// OUTPUT VARIABLES
+// CONSTANT VARIABLES
 // =======================================================
 
 
@@ -9,6 +9,7 @@ const p1TotalScore = document.getElementById("p1-total");
 const p2RoundScore = document.getElementById("p2-round");
 const p2TotalScore = document.getElementById("p2-total");
 const btnRollDice = document.getElementById("btn-roll");
+const btnNewGame = document.getElementById("btn-new");
 
 
 // =======================================================
@@ -97,11 +98,9 @@ const player2 = new Player("Opponent");
 // EVENT LISTENERS
 // =======================================================
 
-const btnNewGame = document.getElementById("btn-new");
 
-btnNewGame.addEventListener("click",function(){
-    popOutput.innerHTML = `</p>You clicked New Game</p>`
-});
+
+
 
 
 
@@ -117,6 +116,10 @@ let p1GameScore = 0;
 let p2CurrentRoundScore;
 let p2GameScore = 0;
 
+btnNewGame.addEventListener("click",function(){
+    popOutput.innerHTML = `</p>You clicked New Game</p>`
+    refreshGame();
+});
 
 btnRollDice.addEventListener("click",function(e){
     
@@ -132,7 +135,6 @@ btnRollDice.addEventListener("click",function(e){
     };
 
 });
-
 
 
 // =======================================================
@@ -201,4 +203,18 @@ function determineWinner(p1TotalScore,p2TotalScore) {
         return `It's a tie!`;
     };
 
+};
+
+
+function refreshGame(){
+    numRoundsPlayed = 0;
+    p1CurrentRoundScore = 0;
+    p1GameScore = 0;
+    p2CurrentRoundScore = 0;
+    p2GameScore = 0;
+
+    p1RoundScore.innerHTML = "";
+    p1TotalScore.innerHTML = "";
+    p2RoundScore.innerHTML = "";
+    p2TotalScore.innerHTML = "";
 };
