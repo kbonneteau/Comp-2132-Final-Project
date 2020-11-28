@@ -3,13 +3,13 @@
 // =======================================================
 
 
-const popOutput = document.getElementById('pop-out');
-const p1RoundScore = document.getElementById("p1-round");
-const p1TotalScore = document.getElementById("p1-total");
-const p2RoundScore = document.getElementById("p2-round");
-const p2TotalScore = document.getElementById("p2-total");
-const btnRollDice = document.getElementById("btn-roll");
-const btnNewGame = document.getElementById("btn-new");
+const popOutput     = document.getElementById('pop-out');
+const p1RoundScore  = document.getElementById("p1-round");
+const p1TotalScore  = document.getElementById("p1-total");
+const p2RoundScore  = document.getElementById("p2-round");
+const p2TotalScore  = document.getElementById("p2-total");
+const btnRollDice   = document.getElementById("btn-roll");
+const btnNewGame    = document.getElementById("btn-new");
 
 
 // =======================================================
@@ -95,13 +95,21 @@ const player2 = new Player("Opponent");
 
 
 // =======================================================
-// EVENT LISTENERS
+// POPUP EVENT LISTENERS
 // =======================================================
 
+const btnOk     = document.getElementById("btn-ok");
+const btnClose  = document.getElementById("btn-close");
+const popup     = document.getElementById("pop-up");
 
+btnOk.addEventListener("click",function(){
+    popup.style.opacity = "0";
 
+});
+btnClose.addEventListener("click",function(){
+    popup.style.opacity = "0";
 
-
+});
 
 
 // =======================================================
@@ -194,6 +202,7 @@ function playGame(){
 
 
 function determineWinner(p1TotalScore,p2TotalScore) {
+    popup.style.opacity = "1";
 
     if (p1TotalScore > p2TotalScore){
         return `You win!`;
