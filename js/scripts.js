@@ -126,7 +126,10 @@ btnRollDice.addEventListener("click",function(e){
         playGame();
         numRoundsPlayed++;
         console.log(numRoundsPlayed);
-    }
+        if(numRoundsPlayed == 3){
+            popOutput.innerHTML = `<p>${determineWinner(p1GameScore,p2GameScore)}</p>`;
+        };
+    };
 
 });
 
@@ -136,6 +139,27 @@ btnRollDice.addEventListener("click",function(e){
 // FUNCTIONS
 // =======================================================
 
+function calculateRoundScore(dice1, dice2){
+    
+    let roundScore;
+
+    if(dice1 == 1 || dice2 == 1){
+        roundScore = 0;
+    }else if(dice1 === dice2){
+        roundScore = ((+dice1 + +dice2)*2);
+    }else{
+        roundScore = (+dice1 + +dice2);
+    };
+
+    return roundScore;
+};
+
+
+function calculateTotalScore(totalScore,roundScore){    
+    totalScore = +totalScore + +roundScore;
+    
+    return totalScore;
+};
 
 
 function playGame(){
@@ -163,27 +187,18 @@ function playGame(){
     p2GameScore = calculateTotalScore(p2GameScore,p2CurrentRoundScore);
 
     p2TotalScore.innerHTML = `${p2GameScore}`
-    
+
 };
 
-function calculateRoundScore(dice1, dice2){
-    
-    let roundScore;
 
-    if(dice1 == 1 || dice2 == 1){
-        roundScore = 0;
-    }else if(dice1 === dice2){
-        roundScore = ((+dice1 + +dice2)*2);
+function determineWinner(p1TotalScore,p2TotalScore) {
+
+    if (p1TotalScore > p2TotalScore){
+        return `You win!`;
+    }else if(p1TotalScore < p2TotalScore){
+        return `You lost! Try again`;
     }else{
-        roundScore = (+dice1 + +dice2);
+        return `It's a tie!`;
     };
 
-    return roundScore;
 };
-
-function calculateTotalScore(totalScore,roundScore){    
-    totalScore = +totalScore + +roundScore;
-    
-    return totalScore;
-};
-
