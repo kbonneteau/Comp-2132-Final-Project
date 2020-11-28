@@ -1,5 +1,13 @@
-const popOutput = document.getElementById('pop-out');
+// =======================================================
+// OUTPUT VARIABLES
+// =======================================================
 
+
+const popOutput = document.getElementById('pop-out');
+const p1RoundScore = document.getElementById("p1-round");
+const p1TotalScore = document.getElementById("p1-total");
+const p2RoundScore = document.getElementById("p2-round");
+const p2TotalScore = document.getElementById("p2-total");
 
 
 // =======================================================
@@ -12,7 +20,7 @@ class Dice {
         this.values = [1,2,3,4,5,6];
     }
     describeSelf(){
-        return `Dice value ${this.values[0]}`;
+        return `${this.values[0]}`;
     }
     rollDice(){
 
@@ -55,23 +63,41 @@ const p2dice2 = new Dice();
 
 function Player(name){
     this.name = name;
-    this.score = [];
+    this.score = 0;
+    this.die = [];
+}
+Player.prototype.addDice = function(dice1, dice2){
+    this.die.push(dice1);
+    this.die.push(dice2);
 }
 Player.prototype.addToScore = function(score){
     this.score = score;
 }
 Player.prototype.describeSelf = function(){
-    let description = `<p>${this.name}'s current dice roll is ${this.score}</p>`
+    let description = `<p>${this.name}'s current dice roll is ${this.die[0]} and ${this.die[1]}</p>`
     
     return description;
 }
+// Player.prototype.displayScore = function(){
+//     return this.score;
+// }
 
 const player1 = new Player("Challenger");
-player1.addToScore(p1dice1.rollDice());
+p1dice1.rollDice();
+p1dice2.rollDice();
+player1.addDice(p1dice1.describeSelf(),p1dice2.describeSelf());
+
+
+// player1.addToScore(p1dice1.rollDice());
 
 
 // test
 popOutput.innerHTML = `<p> Test results: ${player1.describeSelf()}</p>`;
+
+
+
+
+
 
 
 
@@ -81,11 +107,53 @@ popOutput.innerHTML = `<p> Test results: ${player1.describeSelf()}</p>`;
 
 const btnRollDice = document.getElementById("btn-roll");
 const btnNewGame = document.getElementById("btn-new");
+let currentRoundScore;
 
 btnNewGame.addEventListener("click",function(){
     popOutput.innerHTML = `</p>You clicked New Game</p>`
-})
+});
 
 btnRollDice.addEventListener("click",function(){
     popOutput.innerHTML = `</p>You clicked Roll Dice</p>`
-})
+});
+
+
+
+
+
+
+// =======================================================
+// GAMEPLAY LOGIC
+// =======================================================
+
+
+// function calculateRoundScoreP1 (){
+
+
+
+// };
+
+
+
+/*
+
+function
+
+math function for adding up calculateRoundScore 
+
+if dice1 = 0 OR dice2 = 0
+    then Score = 0
+else if dice1 === dice2
+    then Score = (dice1.value+dice2.value)*2
+else (
+    Score = dice1.value+dice2.value
+)
+
+return Score
+
+
+
+
+currentRoundScore = calculateRoundScore();
+
+*/
