@@ -86,14 +86,7 @@ Player.prototype.describeSelf = function(){
 
 
 const player1 = new Player("Challenger");
-
 const player2 = new Player("Opponent");
-
-// player1.addToScore(p1dice1.rollDice());
-
-
-// test
-// popOutput.innerHTML = `<p> Test results: ${player1.describeSelf()}<br>${player2.describeSelf()}</p>`;
 
 
 
@@ -122,7 +115,6 @@ let p2CurrentRoundScore;
 let p2GameScore = 0;
 
 btnNewGame.addEventListener("click",function(){
-    popOutput.innerHTML = `</p>You clicked New Game</p>`
     refreshGame();
 });
 
@@ -135,7 +127,6 @@ btnRollDice.addEventListener("click",function(e){
         diceAnimationHandler = requestAnimationFrame(changeDiceImage);
         setTimeout(playGame,300);
         numRoundsPlayed++;
-        console.log(numRoundsPlayed);
         if(numRoundsPlayed == 3){
             setTimeout(function(){
                 popOutput.innerHTML = `<p>${determineWinner(p1GameScore,p2GameScore)}</p>`;},300);
@@ -159,10 +150,8 @@ let diceAnimationHandler;
 const maxImageNumber = 6;
 let currentImageNumber = 1;
 
-
 const limit = 10;
 let counter = 0;
-
 
 
 function changeDiceImage(){
@@ -195,15 +184,12 @@ function changeDiceImage(){
 };
 
 
-
 // =======================================================
 // FUNCTIONS
 // =======================================================
 
 function calculateRoundScore(dice1, dice2){
-    
     let roundScore;
-
     if(dice1 == 1 || dice2 == 1){
         roundScore = 0;
     }else if(dice1 === dice2){
@@ -211,47 +197,39 @@ function calculateRoundScore(dice1, dice2){
     }else{
         roundScore = (+dice1 + +dice2);
     };
-
     return roundScore;
 };
 
 
 function calculateTotalScore(totalScore,roundScore){    
-    totalScore = +totalScore + +roundScore;
-    
+    totalScore = +totalScore + +roundScore;    
     return totalScore;
 };
 
 
 function playGame(){
-
     // Player 1 rolls
     p1dice1.rollDice();
     p1dice2.rollDice();
-
-    p1CurrentRoundScore = calculateRoundScore(p1dice1.describeSelf(),p1dice2.describeSelf());
-
-    p1RoundScore.innerHTML = `${p1CurrentRoundScore}`
-
-    p1GameScore = calculateTotalScore(p1GameScore,p1CurrentRoundScore);
-
-    p1TotalScore.innerHTML = `${p1GameScore}`
-
     // Player 2 rolls
     p2dice1.rollDice();
     p2dice2.rollDice();
-
+    // call function to calculate round score & total score
+    // Player 1
+    p1CurrentRoundScore = calculateRoundScore(p1dice1.describeSelf(),p1dice2.describeSelf());
+    p1GameScore = calculateTotalScore(p1GameScore,p1CurrentRoundScore);
+    // Player 2
     p2CurrentRoundScore = calculateRoundScore(p2dice1.describeSelf(),p2dice2.describeSelf());
-
-    p2RoundScore.innerHTML = `${p2CurrentRoundScore}`
-
     p2GameScore = calculateTotalScore(p2GameScore,p2CurrentRoundScore);
-
+    // display scores
+    p1RoundScore.innerHTML = `${p1CurrentRoundScore}`
+    p1TotalScore.innerHTML = `${p1GameScore}`
+    p2RoundScore.innerHTML = `${p2CurrentRoundScore}`
     p2TotalScore.innerHTML = `${p2GameScore}`
-
 };
 
 
+// Displays popup advising how player1 did
 function determineWinner(p1TotalScore,p2TotalScore) {
     popup.style.opacity = "1";
 
@@ -266,24 +244,22 @@ function determineWinner(p1TotalScore,p2TotalScore) {
 };
 
 function refreshGame(){
+    // Re-initialize scores
     numRoundsPlayed = 0;
     p1CurrentRoundScore = 0;
     p1GameScore = 0;
     p2CurrentRoundScore = 0;
     p2GameScore = 0;
-
-    p1Image1.setAttribute(`src`,`images/dice-1.png`);
-    p1Image2.setAttribute(`src`,`images/dice-1.png`);
-    p2Image1.setAttribute(`src`,`images/dice-1.png`);
-    p2Image2.setAttribute(`src`,`images/dice-1.png`);
-
-
-
-
+    // Remove scores from the display
     p1RoundScore.innerHTML = "";
     p1TotalScore.innerHTML = "";
     p2RoundScore.innerHTML = "";
     p2TotalScore.innerHTML = "";
+    // Re-initialize dice images
+    p1Image1.setAttribute(`src`,`images/dice-1.png`);
+    p1Image2.setAttribute(`src`,`images/dice-1.png`);
+    p2Image1.setAttribute(`src`,`images/dice-1.png`);
+    p2Image2.setAttribute(`src`,`images/dice-1.png`);
 };
 
 function closePopup(){
