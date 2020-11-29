@@ -53,6 +53,11 @@ header h1 {
   flex-direction: column;
 }
 
+#wrapper main h2 {
+  padding-left: 16px;
+  font-size: 32px;
+}
+
 #wrapper main #game {
   display: grid;
   grid-template-areas: "game-heading   game-heading" "buttons        buttons" "p1section      p2section";
@@ -71,10 +76,22 @@ header h1 {
   padding: 16px;
 }
 
+#wrapper main #game section .score {
+  font-weight: bold;
+}
+
 #wrapper footer {
   background-color: #f4a261;
   color: #264653;
   padding: 15px 38%;
+}
+
+h3, .rules {
+  padding: 16px 0 0 16px;
+}
+
+li {
+  padding-bottom: 16px;
 }
 
 .game-heading {
@@ -98,7 +115,7 @@ header h1 {
 }
 
 #btn-roll, #btn-ok {
-  background-color: fff;
+  background-color: white;
   color: #2a9d8f;
   width: 150px;
   height: 50px;
@@ -124,7 +141,7 @@ header h1 {
 }
 
 #btn-new {
-  background-color: fff;
+  background-color: white;
   color: #E71D36;
   width: 150px;
   height: 50px;
@@ -166,10 +183,6 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /*
-    animate this opacity property
-    from 0 to 1    
-    */
   opacity: 0;
   pointer-events: none;
 }
@@ -179,7 +192,8 @@ img {
   top: 10px;
   right: 10px;
   font-weight: bold;
-  border: solid 2px #264653;
+  border: solid 2px #E71D36;
+  color: #E71D36;
 }
 
 #btn-close, #btn-ok {

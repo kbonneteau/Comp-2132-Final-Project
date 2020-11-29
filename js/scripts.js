@@ -89,7 +89,6 @@ const player1 = new Player("Challenger");
 const player2 = new Player("Opponent");
 
 
-
 // =======================================================
 // POPUP EVENT LISTENERS
 // =======================================================
