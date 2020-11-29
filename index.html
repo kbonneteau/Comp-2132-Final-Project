@@ -19,43 +19,45 @@
             </header>
             <main>
                 <h2>Dice Game</h2>
-                <section id="game">
-                    <h3>Game Area</h3>
-                    <div id="buttons">
-                        <button id="btn-roll">Roll dice</button>
-                        <button id="btn-new">New game</button>
-                    </div>
-                    <!-- Output area -->
-                    <section>
-                        <h4>Player 1</h4>
-
-                        <div id="dice-container1">
-                            <img src="images/dice-1.png" alt="dice with the number 1 on the face" id="dice-image-1">
-
-                            <img src="images/dice-1.png" alt="dice with the number 1 on the face" id="dice-image-2">
+                <div id="dice-game">
+                    <section id="game">
+                        <h3 class="game-heading">Game Area</h3>
+                        <div class="btn-contaner" id="buttons">
+                            <button id="btn-roll">Roll dice</button>
+                            <button id="btn-new">New game</button>
                         </div>
+                        <!-- Output area -->
+                        <section class="section-p1">
+                            <h4 class="h4-p1">Player 1</h4>
 
-                        <div id="score-container1">
-                            <p class="round-score">Score this round: <span id="p1-round"></span></p>
-                            <p class="total-score">Total score: <span id="p1-total"></span></p>
-                        </div>
+                            <div class="dice-container" id="dice-container1">
+                                <img src="images/dice-1.png" alt="dice with the number 1 on the face" id="dice-image-1">
+
+                                <img src="images/dice-1.png" alt="dice with the number 1 on the face" id="dice-image-2">
+                            </div>
+
+                            <div class="score-p1" id="score-container1">
+                                <p class="round-score">Score this round: <span id="p1-round"></span></p>
+                                <p class="total-score">Total score: <span id="p1-total"></span></p>
+                            </div>
+                        </section>
+                        <section class="section-p2">
+                            <h4 class="h4-p2">Player 2</h4>
+                            <div class="dice-container" id="dice-container2">
+                                <img src="images/dice-1.png" alt="dice with the number 1 on the face" id="dice-image-3">
+
+                                <img src="images/dice-1.png" alt="dice with the number 1 on the face" id="dice-image-4">
+                            </div>
+
+                            <div class="score-p2" id="score-container2">
+                                <p class="round-score">Score this round: <span id="p2-round"></span></p>
+                                <p class="total-score">Total score: <span id="p2-total"></span></p>
+                            </div>
+
+                            
+                        </section>
                     </section>
-                    <section>
-                        <h4>Player 2</h4>
-                        <div id="dice-container1">
-                            <img src="images/dice-1.png" alt="dice with the number 1 on the face" id="dice-image-3">
-
-                            <img src="images/dice-1.png" alt="dice with the number 1 on the face" id="dice-image-4">
-                        </div>
-
-                        <div id="score-container2">
-                            <p class="round-score">Score this round: <span id="p2-round"></span></p>
-                            <p class="total-score">Total score: <span id="p2-total"></span></p>
-                        </div>
-
-                        
-                    </section>
-                </section>
+                </div>
 
                 <section id="pop-up">
                     <h2 id="pop-title">Results</h2>

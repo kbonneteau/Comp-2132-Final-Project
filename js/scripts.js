@@ -123,6 +123,7 @@ btnRollDice.addEventListener("click",function(e){
     
     if (numRoundsPlayed > 2){
         e.preventDefault();
+        alert("Please start a new game");
     }else{
         diceAnimationHandler = requestAnimationFrame(changeDiceImage);
         setTimeout(playGame,300);
@@ -227,7 +228,6 @@ function playGame(){
     p2RoundScore.innerHTML = `${p2CurrentRoundScore}`
     p2TotalScore.innerHTML = `${p2GameScore}`
 };
-
 
 // Displays popup advising how player1 did
 function determineWinner(p1TotalScore,p2TotalScore) {

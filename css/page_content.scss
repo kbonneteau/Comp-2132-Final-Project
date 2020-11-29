@@ -16,13 +16,19 @@ html {
 body {
     background-color: $primary_color;
     @include reset(0);
+    opacity: 1;
 }
-
+h1,h2,h3,h4 {
+    @include headingStyle();
+}
 
 
 header{ 
     background-color: $accent;
     @include reset(0);
+    h1 {
+        text-align: center;
+    }
 }
 
 #wrapper {
@@ -40,16 +46,30 @@ header{
         display: flex;
         flex-direction: column;
 
-        #game {
-            display: flex;
-            flex-flow: column wrap;
 
-            h3{
-                flex: 2;
+        #game {
+            display: grid;
+            grid-template-areas:
+            "game-heading   game-heading"
+            "buttons        buttons"
+            "p1section      p2section";
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 60px) 1fr;
+            gap: 16px;
+        
+
+            #buttons{
+                button {
+                    margin: 0 50px;
+                }
             }
+
             section {
-                flex: 1;
+                border: solid 5px $accent2;
+                border-radius: 15px;
+                padding: 16px;
             }
+
         }
     }
 
@@ -60,6 +80,57 @@ header{
     }
 }
 
+
+
+
+// GRID AREA SETUP
+
+.game-heading{
+    @include gridComponentSetup(game-heading);
+    justify-self: center;
+}
+
+.btn-contaner{
+    @include gridComponentSetup(buttons);
+    justify-self: center;
+}
+
+.section-p1{
+    @include gridComponentSetup(p1section);
+    justify-self: center;
+}
+
+.section-p2{
+    @include gridComponentSetup(p2section);
+    justify-self: center;
+}
+
+
+
+
+
+
+
+
+// button styling
+#btn-roll, #btn-ok{
+    @include buttonStyle($accent);
+}
+#btn-roll:hover, #btn-ok:hover {
+    @include buttonHover($accent);
+}
+#btn-roll:active, #btn-ok:active {
+    @include buttonActive($accent);
+}
+#btn-new {
+    @include buttonStyle($exit_color);
+}
+#btn-new:hover {
+    @include buttonHover($exit_color);
+}
+#btn-new:active {
+    @include buttonActive($exit_color);
+}
 
 
 

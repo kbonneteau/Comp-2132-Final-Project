@@ -2,3 +2,58 @@
     padding: $padding;
     margin: $padding;
 }
+
+
+// @mixin playerGrid($componentName1,$componentName2,$componentName3,$componentName4){
+//     display: grid;
+//     grid-template-areas:
+//     "$componentName1    $componentName1"
+//     "$componentName2    $componentName3"
+//     "$componentName4    $componentName4";
+//     grid-template-columns: 1fr 1fr;
+//     grid-template-rows: 1fr 1fr 1fr 1fr;
+//     gap: 16px;
+
+// }
+
+@mixin gridComponentSetup($area){
+    grid-area: $area;
+}
+
+@mixin contentAlign(){
+    margin: 0 auto;
+    padding: 5px 0;
+}
+
+@mixin buttonStyle($colorSelection){
+    background-color: fff;
+    color: $colorSelection;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: solid 2px $colorSelection;
+    font-family: $font;
+    text-align: center;
+    vertical-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+@mixin buttonHover($colorSelection){
+    color: $colorSelection;
+    border: solid 2px $colorSelection;
+}
+
+@mixin buttonActive($colorSelection){
+    background-color: $colorSelection;
+    color: $secondary_color;
+}
+
+@mixin headingStyle(){
+    font-size: $headingSize;
+    font-weight: bold;
+    text-transform: uppercase;
+}

@@ -16,12 +16,23 @@ body {
   background-color: #264653;
   padding: 0;
   margin: 0;
+  opacity: 1;
+}
+
+h1, h2, h3, h4 {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 header {
   background-color: #2a9d8f;
   padding: 0;
   margin: 0;
+}
+
+header h1 {
+  text-align: center;
 }
 
 #wrapper {
@@ -43,22 +54,99 @@ header {
 }
 
 #wrapper main #game {
-  display: flex;
-  flex-flow: column wrap;
+  display: grid;
+  grid-template-areas: "game-heading   game-heading" "buttons        buttons" "p1section      p2section";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 60px) 1fr;
+  gap: 16px;
 }
 
-#wrapper main #game h3 {
-  flex: 2;
+#wrapper main #game #buttons button {
+  margin: 0 50px;
 }
 
 #wrapper main #game section {
-  flex: 1;
+  border: solid 5px #f4a261;
+  border-radius: 15px;
+  padding: 16px;
 }
 
 #wrapper footer {
   background-color: #f4a261;
   color: #264653;
   padding: 15px 38%;
+}
+
+.game-heading {
+  grid-area: game-heading;
+  justify-self: center;
+}
+
+.btn-contaner {
+  grid-area: buttons;
+  justify-self: center;
+}
+
+.section-p1 {
+  grid-area: p1section;
+  justify-self: center;
+}
+
+.section-p2 {
+  grid-area: p2section;
+  justify-self: center;
+}
+
+#btn-roll, #btn-ok {
+  background-color: fff;
+  color: #2a9d8f;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: solid 2px #2a9d8f;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  vertical-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#btn-roll:hover, #btn-ok:hover {
+  color: #2a9d8f;
+  border: solid 2px #2a9d8f;
+}
+
+#btn-roll:active, #btn-ok:active {
+  background-color: #2a9d8f;
+  color: #fff1e6;
+}
+
+#btn-new {
+  background-color: fff;
+  color: #E71D36;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: solid 2px #E71D36;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  vertical-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#btn-new:hover {
+  color: #E71D36;
+  border: solid 2px #E71D36;
+}
+
+#btn-new:active {
+  background-color: #E71D36;
+  color: #fff1e6;
 }
 
 img {

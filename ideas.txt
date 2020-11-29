@@ -13,14 +13,7 @@ animation
     {start animation frame 1.5 seconds (use set timeout to slow animation frame)
 
     end}
-    assign current dice value to image name & alt values for dice
-
-
-
-
-
-
-
+    assign current dice value to image name & alt values for dic
 
 
 
@@ -84,33 +77,35 @@ currentRoundScore = calculateRoundScore();
 
 
 
-math rules
-
-calulating history
-
-Create a dice game where a user plays against the computer. The user and the computer each
-roll a pair of dice 3 times. After the third roll of the dice the player with highest score wins
-The scoring for the game works as follows:
-
-- If any of the players two dice comes up as a 1 then the score for that round for the
-player is 0. eg: if the player rolls a 6 and 1, they get a score of 0
-- If the player rolls a pair of the same numbers then the players score is the total of the
-two dice times 2. eg: if he player rolls 5 and 5, they get a score of (5+5)*2=20
-- If the player rolls any other combination of dice other than the ones mentioned above
-then the players score is the total value of the two dice, eg: player rolls a 3 and 2,
-player gets a score of 3+2=5
--
 
 
-The game should provide a text or graphical output showing the following:
-- The current rolled dice by the player and the computer
-- The score for this round for the player and the computer
-- The total score for the game
 
 
-The game should provide a button that will roll the dice for the player and the computer
-After three rolls of the dice the game should total up the scores and display a message
-displaying who the winner was
+==========================================
+SCSS
+==========================================
 
-The game should provide a button that will reset the game and start a new game
+GRID AREAS
 
+.game-heading (h3)
+    game-heading
+
+.btn-contaner
+    buttons
+
+.section-p1
+    p1section
+
+.section-p2
+    p2section
+
+
+
+.h4-p1
+.dice-p1
+.score-p1
+
+
+.h4-p2
+.dice-p2
+.score-p2
