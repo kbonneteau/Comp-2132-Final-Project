@@ -39,8 +39,11 @@ class Dice {
         //return the randomly sorted array
         return this.values[0];  
 
+    };
+    assignImage(diceValue){
+        const imageNumber = diceValue;
+        return `images/dice-${imageNumber}`;
     }
-
 };
 
 // test
@@ -102,14 +105,8 @@ const btnOk     = document.getElementById("btn-ok");
 const btnClose  = document.getElementById("btn-close");
 const popup     = document.getElementById("pop-up");
 
-btnOk.addEventListener("click",function(){
-    popup.style.opacity = "0";
-
-});
-btnClose.addEventListener("click",function(){
-    popup.style.opacity = "0";
-
-});
+btnOk.addEventListener("click",closePopup);
+btnClose.addEventListener("click",closePopup);
 
 
 // =======================================================
@@ -130,19 +127,73 @@ btnNewGame.addEventListener("click",function(){
 });
 
 btnRollDice.addEventListener("click",function(e){
+    counter = 0;
     
     if (numRoundsPlayed > 2){
         e.preventDefault();
     }else{
-        playGame();
+        diceAnimationHandler = requestAnimationFrame(changeDiceImage);
+        setTimeout(playGame,300);
         numRoundsPlayed++;
         console.log(numRoundsPlayed);
         if(numRoundsPlayed == 3){
-            popOutput.innerHTML = `<p>${determineWinner(p1GameScore,p2GameScore)}</p>`;
+            setTimeout(function(){
+                popOutput.innerHTML = `<p>${determineWinner(p1GameScore,p2GameScore)}</p>`;},300);
         };
     };
 
 });
+
+
+// =======================================================
+// ANIMATION
+// =======================================================
+
+
+const p1Image1 = document.getElementById("dice-image-1");
+const p1Image2 = document.getElementById("dice-image-2");
+const p2Image1 = document.getElementById("dice-image-3");
+const p2Image2 = document.getElementById("dice-image-4");
+
+let diceAnimationHandler;
+const maxImageNumber = 6;
+let currentImageNumber = 1;
+
+
+const limit = 10;
+let counter = 0;
+
+
+
+function changeDiceImage(){
+
+    counter++;
+    if(counter > limit){
+
+        cancelAnimationFrame(diceAnimationHandler);
+    }else{
+        if(currentImageNumber > maxImageNumber){
+            currentImageNumber = 1;
+        };
+
+        p1Image1.setAttribute(`src`,`images/dice-${currentImageNumber}.png`);
+        p1Image2.setAttribute(`src`,`images/dice-${currentImageNumber}.png`);
+        p2Image1.setAttribute(`src`,`images/dice-${currentImageNumber}.png`);
+        p2Image2.setAttribute(`src`,`images/dice-${currentImageNumber}.png`);
+
+        currentImageNumber++;
+
+        setTimeout (function(){
+            diceAnimationHandler = requestAnimationFrame(changeDiceImage);
+            p1Image1.setAttribute(`src`,`images/dice-${p1dice1.describeSelf()}.png`);
+            p1Image2.setAttribute(`src`,`images/dice-${p1dice2.describeSelf()}.png`);
+            p2Image1.setAttribute(`src`,`images/dice-${p2dice1.describeSelf()}.png`);
+            p2Image2.setAttribute(`src`,`images/dice-${p2dice2.describeSelf()}.png`);
+        }, 25);
+    };
+
+};
+
 
 
 // =======================================================
@@ -214,7 +265,6 @@ function determineWinner(p1TotalScore,p2TotalScore) {
 
 };
 
-
 function refreshGame(){
     numRoundsPlayed = 0;
     p1CurrentRoundScore = 0;
@@ -222,8 +272,20 @@ function refreshGame(){
     p2CurrentRoundScore = 0;
     p2GameScore = 0;
 
+    p1Image1.setAttribute(`src`,`images/dice-1.png`);
+    p1Image2.setAttribute(`src`,`images/dice-1.png`);
+    p2Image1.setAttribute(`src`,`images/dice-1.png`);
+    p2Image2.setAttribute(`src`,`images/dice-1.png`);
+
+
+
+
     p1RoundScore.innerHTML = "";
     p1TotalScore.innerHTML = "";
     p2RoundScore.innerHTML = "";
     p2TotalScore.innerHTML = "";
+};
+
+function closePopup(){
+    popup.style.opacity = "0";
 };

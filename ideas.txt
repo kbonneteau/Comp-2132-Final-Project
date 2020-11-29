@@ -7,6 +7,20 @@ Function
 - Create math functions
 
 
+animation
+    scroll through dice images for 1.5 seconds before showing the score
+    
+    {start animation frame 1.5 seconds (use set timeout to slow animation frame)
+
+    end}
+    assign current dice value to image name & alt values for dice
+
+
+
+
+
+
+
 
 
 
@@ -46,8 +60,6 @@ object
     player object?
 
 
-animation
-    scroll through dice images for x seconds before showing the score
 
 
 
