@@ -149,6 +149,20 @@ img {
     height: $diceSize;
 }
 
+.icon {
+    float: left;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    @include borderStyle();
+}
+
+h4 {
+    margin-left: 55px;
+    background-color: $accent2;
+}
+
+
 #pop-up {
     background-color: $accent2;
     color: black;

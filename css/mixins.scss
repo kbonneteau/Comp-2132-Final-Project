@@ -43,3 +43,7 @@
     font-weight: bold;
     text-transform: uppercase;
 }
+
+@mixin borderStyle(){
+    border: solid 3px $accent2;
+}

@@ -171,6 +171,19 @@ img {
   height: 150px;
 }
 
+.icon {
+  float: left;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: solid 3px #f4a261;
+}
+
+h4 {
+  margin-left: 55px;
+  background-color: #f4a261;
+}
+
 #pop-up {
   background-color: #f4a261;
   color: black;
