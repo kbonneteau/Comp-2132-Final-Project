@@ -114,6 +114,10 @@ li {
   justify-self: center;
 }
 
+h2 {
+  text-align: center;
+}
+
 #btn-roll, #btn-ok {
   background-color: white;
   color: #2a9d8f;

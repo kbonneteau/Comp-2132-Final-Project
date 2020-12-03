@@ -124,6 +124,10 @@ li {
 // BUTTON STYLING & PSEUDOCLASSES
 
 
+h2 {
+    text-align: center;
+}
+
 #btn-roll, #btn-ok{
     @include buttonStyle($accent);
 }
