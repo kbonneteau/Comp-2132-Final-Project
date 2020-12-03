@@ -10,7 +10,8 @@ const p2RoundScore  = document.getElementById("p2-round");
 const p2TotalScore  = document.getElementById("p2-total");
 const btnRollDice   = document.getElementById("btn-roll");
 const btnNewGame    = document.getElementById("btn-new");
-
+const playerArea = document.getElementById("p1");
+const opponentArea = document.getElementById("p2");
 
 // =======================================================
 // DICE OBJECT
@@ -40,17 +41,7 @@ class Dice {
         return this.values[0];  
 
     };
-    assignImage(diceValue){
-        const imageNumber = diceValue;
-        return `images/dice-${imageNumber}`;
-    }
 };
-
-// test
-const diceTest = new Dice();
-diceTest.rollDice();
-popOutput.innerHTML = `<p> Test results: ${diceTest.describeSelf()}</p>`;
-
 
 // Player 1's dice
 const p1dice1 = new Dice();
@@ -59,7 +50,6 @@ const p1dice2 = new Dice();
 // Player 2's dice
 const p2dice1 = new Dice();
 const p2dice2 = new Dice();
-
 
 
 // =======================================================
@@ -74,9 +64,6 @@ function Player(name){
 Player.prototype.addDice = function(dice1, dice2){
     this.die.push(dice1);
     this.die.push(dice2);
-}
-Player.prototype.addToScore = function(score){
-    this.score = score;
 }
 Player.prototype.describeSelf = function(){
     let description = `<p>${this.name}'s current dice roll is ${this.die[0]} and ${this.die[1]}.<br>Current score: ${this.score}</p>`
@@ -228,13 +215,18 @@ function playGame(){
     p2TotalScore.innerHTML = `${p2GameScore}`
 };
 
-// Displays popup advising how player1 did
+
+// Displays popup advising how player1 did, color borders
 function determineWinner(p1TotalScore,p2TotalScore) {
     popup.style.opacity = "1";
 
     if (p1TotalScore > p2TotalScore){
+        playerArea.style.borderColor = "#2a9d8f";
+        opponentArea.style.borderColor = "#E71D36";
         return `You win!`;
     }else if(p1TotalScore < p2TotalScore){
+        playerArea.style.borderColor = "#E71D36";
+        opponentArea.style.borderColor = "#2a9d8f";
         return `You lost! Try again`;
     }else{
         return `It's a tie!`;
@@ -259,6 +251,9 @@ function refreshGame(){
     p1Image2.setAttribute(`src`,`images/dice-1.png`);
     p2Image1.setAttribute(`src`,`images/dice-1.png`);
     p2Image2.setAttribute(`src`,`images/dice-1.png`);
+    // reset player area borders
+    playerArea.style.borderColor = "#f4a261";
+    opponentArea.style.borderColor = "#f4a261";
 };
 
 function closePopup(){
